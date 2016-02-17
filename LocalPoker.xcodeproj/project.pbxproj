@@ -12,6 +12,8 @@
 		FA4355FD1C74D5B3007E36DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4355FB1C74D5B3007E36DF /* Main.storyboard */; };
 		FA4355FF1C74D5B3007E36DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA4355FE1C74D5B3007E36DF /* Assets.xcassets */; };
 		FA4356021C74D5B3007E36DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4356001C74D5B3007E36DF /* LaunchScreen.storyboard */; };
+		FA43560B1C74D5C8007E36DF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA43560A1C74D5C8007E36DF /* CloudKit.framework */; };
+		FA43560D1C74DCB1007E36DF /* NewGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA43560C1C74DCB1007E36DF /* NewGameTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,9 @@
 		FA4355FE1C74D5B3007E36DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA4356011C74D5B3007E36DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA4356031C74D5B3007E36DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA4356091C74D5C0007E36DF /* LocalPoker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocalPoker.entitlements; sourceTree = "<group>"; };
+		FA43560A1C74D5C8007E36DF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		FA43560C1C74DCB1007E36DF /* NewGameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA43560B1C74D5C8007E36DF /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +44,7 @@
 		FA4355EB1C74D5B3007E36DF = {
 			isa = PBXGroup;
 			children = (
+				FA43560A1C74D5C8007E36DF /* CloudKit.framework */,
 				FA4355F61C74D5B3007E36DF /* LocalPoker */,
 				FA4355F51C74D5B3007E36DF /* Products */,
 			);
@@ -54,8 +61,10 @@
 		FA4355F61C74D5B3007E36DF /* LocalPoker */ = {
 			isa = PBXGroup;
 			children = (
+				FA4356091C74D5C0007E36DF /* LocalPoker.entitlements */,
 				FA4355F71C74D5B3007E36DF /* AppDelegate.swift */,
 				FA4355F91C74D5B3007E36DF /* ViewController.swift */,
+				FA43560C1C74DCB1007E36DF /* NewGameTableViewController.swift */,
 				FA4355FB1C74D5B3007E36DF /* Main.storyboard */,
 				FA4355FE1C74D5B3007E36DF /* Assets.xcassets */,
 				FA4356001C74D5B3007E36DF /* LaunchScreen.storyboard */,
@@ -96,6 +105,15 @@
 				TargetAttributes = {
 					FA4355F31C74D5B3007E36DF = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 96HG6E2WJ6;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -136,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA4355FA1C74D5B3007E36DF /* ViewController.swift in Sources */,
+				FA43560D1C74DCB1007E36DF /* NewGameTableViewController.swift in Sources */,
 				FA4355F81C74D5B3007E36DF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,10 +266,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LocalPoker/LocalPoker.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LocalPoker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zzzel.LocalPoker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -258,10 +281,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LocalPoker/LocalPoker.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LocalPoker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zzzel.LocalPoker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
