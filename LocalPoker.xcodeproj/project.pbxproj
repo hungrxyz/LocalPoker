@@ -1,0 +1,291 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA4355F81C74D5B3007E36DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4355F71C74D5B3007E36DF /* AppDelegate.swift */; };
+		FA4355FA1C74D5B3007E36DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4355F91C74D5B3007E36DF /* ViewController.swift */; };
+		FA4355FD1C74D5B3007E36DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4355FB1C74D5B3007E36DF /* Main.storyboard */; };
+		FA4355FF1C74D5B3007E36DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA4355FE1C74D5B3007E36DF /* Assets.xcassets */; };
+		FA4356021C74D5B3007E36DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4356001C74D5B3007E36DF /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FA4355F41C74D5B3007E36DF /* LocalPoker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalPoker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA4355F71C74D5B3007E36DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FA4355F91C74D5B3007E36DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FA4355FC1C74D5B3007E36DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FA4355FE1C74D5B3007E36DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA4356011C74D5B3007E36DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FA4356031C74D5B3007E36DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA4355F11C74D5B3007E36DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA4355EB1C74D5B3007E36DF = {
+			isa = PBXGroup;
+			children = (
+				FA4355F61C74D5B3007E36DF /* LocalPoker */,
+				FA4355F51C74D5B3007E36DF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FA4355F51C74D5B3007E36DF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA4355F41C74D5B3007E36DF /* LocalPoker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA4355F61C74D5B3007E36DF /* LocalPoker */ = {
+			isa = PBXGroup;
+			children = (
+				FA4355F71C74D5B3007E36DF /* AppDelegate.swift */,
+				FA4355F91C74D5B3007E36DF /* ViewController.swift */,
+				FA4355FB1C74D5B3007E36DF /* Main.storyboard */,
+				FA4355FE1C74D5B3007E36DF /* Assets.xcassets */,
+				FA4356001C74D5B3007E36DF /* LaunchScreen.storyboard */,
+				FA4356031C74D5B3007E36DF /* Info.plist */,
+			);
+			path = LocalPoker;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA4355F31C74D5B3007E36DF /* LocalPoker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA4356061C74D5B3007E36DF /* Build configuration list for PBXNativeTarget "LocalPoker" */;
+			buildPhases = (
+				FA4355F01C74D5B3007E36DF /* Sources */,
+				FA4355F11C74D5B3007E36DF /* Frameworks */,
+				FA4355F21C74D5B3007E36DF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LocalPoker;
+			productName = LocalPoker;
+			productReference = FA4355F41C74D5B3007E36DF /* LocalPoker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA4355EC1C74D5B3007E36DF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Zel Marko";
+				TargetAttributes = {
+					FA4355F31C74D5B3007E36DF = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = FA4355EF1C74D5B3007E36DF /* Build configuration list for PBXProject "LocalPoker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FA4355EB1C74D5B3007E36DF;
+			productRefGroup = FA4355F51C74D5B3007E36DF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA4355F31C74D5B3007E36DF /* LocalPoker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA4355F21C74D5B3007E36DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA4356021C74D5B3007E36DF /* LaunchScreen.storyboard in Resources */,
+				FA4355FF1C74D5B3007E36DF /* Assets.xcassets in Resources */,
+				FA4355FD1C74D5B3007E36DF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA4355F01C74D5B3007E36DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA4355FA1C74D5B3007E36DF /* ViewController.swift in Sources */,
+				FA4355F81C74D5B3007E36DF /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FA4355FB1C74D5B3007E36DF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA4355FC1C74D5B3007E36DF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FA4356001C74D5B3007E36DF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA4356011C74D5B3007E36DF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA4356041C74D5B3007E36DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FA4356051C74D5B3007E36DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA4356071C74D5B3007E36DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LocalPoker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zzzel.LocalPoker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FA4356081C74D5B3007E36DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LocalPoker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zzzel.LocalPoker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA4355EF1C74D5B3007E36DF /* Build configuration list for PBXProject "LocalPoker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA4356041C74D5B3007E36DF /* Debug */,
+				FA4356051C74D5B3007E36DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA4356061C74D5B3007E36DF /* Build configuration list for PBXNativeTarget "LocalPoker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA4356071C74D5B3007E36DF /* Debug */,
+				FA4356081C74D5B3007E36DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA4355EC1C74D5B3007E36DF /* Project object */;
+}
