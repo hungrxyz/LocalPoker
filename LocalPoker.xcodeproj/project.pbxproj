@@ -14,6 +14,7 @@
 		FA4356021C74D5B3007E36DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4356001C74D5B3007E36DF /* LaunchScreen.storyboard */; };
 		FA43560B1C74D5C8007E36DF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA43560A1C74D5C8007E36DF /* CloudKit.framework */; };
 		FA43560D1C74DCB1007E36DF /* NewGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA43560C1C74DCB1007E36DF /* NewGameTableViewController.swift */; };
+		FA43560F1C74F739007E36DF /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA43560E1C74F739007E36DF /* DatePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		FA4356091C74D5C0007E36DF /* LocalPoker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocalPoker.entitlements; sourceTree = "<group>"; };
 		FA43560A1C74D5C8007E36DF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		FA43560C1C74DCB1007E36DF /* NewGameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameTableViewController.swift; sourceTree = "<group>"; };
+		FA43560E1C74F739007E36DF /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				FA4355F71C74D5B3007E36DF /* AppDelegate.swift */,
 				FA4355F91C74D5B3007E36DF /* ViewController.swift */,
 				FA43560C1C74DCB1007E36DF /* NewGameTableViewController.swift */,
+				FA43560E1C74F739007E36DF /* DatePickerViewController.swift */,
 				FA4355FB1C74D5B3007E36DF /* Main.storyboard */,
 				FA4355FE1C74D5B3007E36DF /* Assets.xcassets */,
 				FA4356001C74D5B3007E36DF /* LaunchScreen.storyboard */,
@@ -153,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA43560F1C74F739007E36DF /* DatePickerViewController.swift in Sources */,
 				FA4355FA1C74D5B3007E36DF /* ViewController.swift in Sources */,
 				FA43560D1C74DCB1007E36DF /* NewGameTableViewController.swift in Sources */,
 				FA4355F81C74D5B3007E36DF /* AppDelegate.swift in Sources */,

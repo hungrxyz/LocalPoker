@@ -74,7 +74,7 @@
         <!--New Game-->
         <scene sceneID="Y4b-oB-UD9">
             <objects>
-                <tableViewController id="Ua5-ac-94C" sceneMemberID="viewController">
+                <tableViewController id="Ua5-ac-94C" customClass="NewGameTableViewController" customModule="LocalPoker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="9v4-9a-XYe">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,7 +86,7 @@
                                         <rect key="frame" x="0.0" y="50" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RRH-Pb-mln" id="qu4-cg-zqO">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Event Name" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Asn-oQ-ZgN">
@@ -107,7 +107,7 @@
                                         <rect key="frame" x="0.0" y="94" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A3Q-T6-7vB" id="xHU-CR-sMY">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Date and Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ny2-7F-OVK">
@@ -131,7 +131,7 @@
                                         <rect key="frame" x="0.0" y="138" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="snL-qt-c37" id="AbN-w8-gub">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="iFw-QM-yfh">
@@ -217,7 +217,7 @@
                                         <rect key="frame" x="0.0" y="414" width="320" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AkC-Pk-4j8" id="HBp-my-feJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="129.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="n78-7S-YlE">
@@ -244,7 +244,7 @@
                                         <rect key="frame" x="0.0" y="580" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qcg-Iv-VqP" id="N27-nL-iUf">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcE-zZ-et5">
@@ -253,6 +253,9 @@
                                                     <state key="normal" title="Create Event">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="createEventTapped:" destination="Ua5-ac-94C" eventType="touchUpInside" id="63G-PP-dm4"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -272,6 +275,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Game" id="0Xm-P9-Vht"/>
+                    <connections>
+                        <outlet property="additionalInfoTextView" destination="n78-7S-YlE" id="A5b-ts-LIN"/>
+                        <outlet property="blindsTextField" destination="O4J-J9-XvY" id="Lje-ZE-QnT"/>
+                        <outlet property="buyInTextField" destination="e15-l7-FdG" id="P5o-mW-uH9"/>
+                        <outlet property="eventNameTextField" destination="Asn-oQ-ZgN" id="uNQ-sC-GER"/>
+                        <outlet property="locationTextField" destination="iFw-QM-yfh" id="4Pc-uZ-AsN"/>
+                        <outlet property="maxPeopleTextField" destination="Ue8-9C-vdW" id="MDR-h2-swF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K77-qT-ocv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -280,7 +291,7 @@
         <!--Date and Time-->
         <scene sceneID="7tx-ss-CQE">
             <objects>
-                <viewController id="gfY-6u-HDz" sceneMemberID="viewController">
+                <viewController id="gfY-6u-HDz" customClass="DatePickerViewController" customModule="LocalPoker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UPO-Ng-aeB"/>
                         <viewControllerLayoutGuide type="bottom" id="mqM-eF-FvR"/>
@@ -294,6 +305,9 @@
                                 <date key="date" timeIntervalSinceReferenceDate="477421605.89466202">
                                     <!--2016-02-17 17:06:45 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="datePickerValueChanged:" destination="gfY-6u-HDz" eventType="valueChanged" id="4wN-zH-PpL"/>
+                                </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8NR-fe-lCB">
                                 <rect key="frame" x="102" y="8" width="117" height="22"/>
@@ -316,6 +330,9 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="selectedDateLabel" destination="8NR-fe-lCB" id="dr4-iu-jN4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqb-yT-eCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
