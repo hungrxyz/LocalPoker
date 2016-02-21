@@ -15,6 +15,7 @@
 		FA43560B1C74D5C8007E36DF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA43560A1C74D5C8007E36DF /* CloudKit.framework */; };
 		FA43560D1C74DCB1007E36DF /* NewGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA43560C1C74DCB1007E36DF /* NewGameTableViewController.swift */; };
 		FA43560F1C74F739007E36DF /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA43560E1C74F739007E36DF /* DatePickerViewController.swift */; };
+		FA4BE5791C7A2F86007FE7F7 /* NewGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4BE5771C7A2F86007FE7F7 /* NewGame.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		FA43560A1C74D5C8007E36DF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		FA43560C1C74DCB1007E36DF /* NewGameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameTableViewController.swift; sourceTree = "<group>"; };
 		FA43560E1C74F739007E36DF /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		FA4BE5781C7A2F86007FE7F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NewGame.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				FA43560C1C74DCB1007E36DF /* NewGameTableViewController.swift */,
 				FA43560E1C74F739007E36DF /* DatePickerViewController.swift */,
 				FA4355FB1C74D5B3007E36DF /* Main.storyboard */,
+				FA4BE5771C7A2F86007FE7F7 /* NewGame.storyboard */,
 				FA4355FE1C74D5B3007E36DF /* Assets.xcassets */,
 				FA4356001C74D5B3007E36DF /* LaunchScreen.storyboard */,
 				FA4356031C74D5B3007E36DF /* Info.plist */,
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA4356021C74D5B3007E36DF /* LaunchScreen.storyboard in Resources */,
+				FA4BE5791C7A2F86007FE7F7 /* NewGame.storyboard in Resources */,
 				FA4355FF1C74D5B3007E36DF /* Assets.xcassets in Resources */,
 				FA4355FD1C74D5B3007E36DF /* Main.storyboard in Resources */,
 			);
@@ -180,6 +184,14 @@
 				FA4356011C74D5B3007E36DF /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		FA4BE5771C7A2F86007FE7F7 /* NewGame.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA4BE5781C7A2F86007FE7F7 /* Base */,
+			);
+			name = NewGame.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -315,6 +327,7 @@
 				FA4356081C74D5B3007E36DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

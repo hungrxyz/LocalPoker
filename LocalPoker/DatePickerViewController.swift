@@ -12,6 +12,8 @@ class DatePickerViewController: UIViewController {
 	
 	@IBOutlet weak var selectedDateLabel: UILabel!
 	
+	var selectedDate: NSDate?
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -21,6 +23,7 @@ class DatePickerViewController: UIViewController {
 	@IBAction func datePickerValueChanged(sender: UIDatePicker) {
 		print(sender.date)
 		selectedDateLabel.text = "\(sender.date)"
+		selectedDate = sender.date
 	}
 	
 }
