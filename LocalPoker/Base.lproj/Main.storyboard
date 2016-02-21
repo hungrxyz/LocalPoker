@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Games-->
+        <!--Events-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LocalPoker" customModuleProvider="target" sceneMemberID="viewController">
@@ -57,7 +57,7 @@
                             <constraint firstItem="B92-nk-LsH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZvD-Io-Lca"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Games" id="3cH-ew-Uk1">
+                    <navigationItem key="navigationItem" title="Events" id="3cH-ew-Uk1">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cdc-wc-pza">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -99,7 +99,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z7d-df-CQT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="464"/>
+            <point key="canvasLocation" x="1191.5" y="464"/>
         </scene>
     </scenes>
 </document>

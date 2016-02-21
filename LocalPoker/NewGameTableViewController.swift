@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class NewGameTableViewController: UITableViewController {
 	
@@ -40,6 +41,24 @@ class NewGameTableViewController: UITableViewController {
 	}
 	
 	@IBAction func createEventTapped(sender: AnyObject) {
+		let newEvent = CKRecord(recordType: "Event")
+		newEvent.setValue(eventNameTextField.text, forKey: "name")
+		newEvent.setValue(eventDate, forKey: "date")
+		newEvent.setValue(locationTextField.text, forKey: "location")
+		newEvent.setValue(Int(minPeopleLabel.text!), forKey: "minPeople")
+		newEvent.setValue(Int(maxPeopleLabel.text!), forKey: "maxPeople")
+		newEvent.setValue(buyInTextField.text, forKey: "buyIn")
+		newEvent.setValue(blindsTextField.text, forKey: "blinds")
+		newEvent.setValue(additionalInfoTextView.text, forKey: "additionalInformation")
+		
+		CKContainer.defaultContainer().publicCloudDatabase.saveRecord(newEvent) { record, error in
+			if let error = error {
+				print(error)
+			} else if let record = record {
+				print(record)
+			}
+			
+		}
 		
 	}
 	
