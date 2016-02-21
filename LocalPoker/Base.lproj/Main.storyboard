@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameCell" textLabel="it2-Bd-dbX" detailTextLabel="wkL-aB-Yxl" style="IBUITableViewCellStyleValue1" id="qgN-sj-Dve">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="EventCell" textLabel="it2-Bd-dbX" detailTextLabel="wkL-aB-Yxl" style="IBUITableViewCellStyleValue1" id="qgN-sj-Dve">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qgN-sj-Dve" id="4tk-kx-YSS">
@@ -47,6 +47,10 @@
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="fMZ-NR-JSk"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="8fb-hK-y2G"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -66,6 +70,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="tableView" destination="B92-nk-LsH" id="7rE-gZ-cp7"/>
+                        <segue destination="TQo-t4-RKZ" kind="push" identifier="segueEventDetail" id="9kt-IT-TRA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -100,6 +108,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z7d-df-CQT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1191.5" y="464"/>
+        </scene>
+        <!--EventDetail-->
+        <scene sceneID="Vza-PZ-J9h">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EventDetail" id="TQo-t4-RKZ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="g6v-ZN-A4r"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qRy-Md-aRv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1223" y="711"/>
         </scene>
     </scenes>
 </document>

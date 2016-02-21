@@ -16,6 +16,9 @@
 		FA43560D1C74DCB1007E36DF /* NewGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA43560C1C74DCB1007E36DF /* NewGameTableViewController.swift */; };
 		FA43560F1C74F739007E36DF /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA43560E1C74F739007E36DF /* DatePickerViewController.swift */; };
 		FA4BE5791C7A2F86007FE7F7 /* NewGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4BE5771C7A2F86007FE7F7 /* NewGame.storyboard */; };
+		FAA358C41C7A5E1C003897DF /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA358C31C7A5E1C003897DF /* Event.swift */; };
+		FAA358C71C7A62FA003897DF /* EventDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA358C61C7A62FA003897DF /* EventDetail.storyboard */; };
+		FAA358C91C7A630C003897DF /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA358C81C7A630C003897DF /* EventDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		FA43560C1C74DCB1007E36DF /* NewGameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameTableViewController.swift; sourceTree = "<group>"; };
 		FA43560E1C74F739007E36DF /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		FA4BE5781C7A2F86007FE7F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NewGame.storyboard; sourceTree = "<group>"; };
+		FAA358C31C7A5E1C003897DF /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		FAA358C61C7A62FA003897DF /* EventDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventDetail.storyboard; sourceTree = "<group>"; };
+		FAA358C81C7A630C003897DF /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,16 +73,51 @@
 			children = (
 				FA4356091C74D5C0007E36DF /* LocalPoker.entitlements */,
 				FA4355F71C74D5B3007E36DF /* AppDelegate.swift */,
-				FA4355F91C74D5B3007E36DF /* ViewController.swift */,
-				FA43560C1C74DCB1007E36DF /* NewGameTableViewController.swift */,
-				FA43560E1C74F739007E36DF /* DatePickerViewController.swift */,
-				FA4355FB1C74D5B3007E36DF /* Main.storyboard */,
-				FA4BE5771C7A2F86007FE7F7 /* NewGame.storyboard */,
+				FAA358C11C7A5DFE003897DF /* Events */,
+				FAA358CA1C7A6314003897DF /* Event Detail */,
+				FAA358C21C7A5E06003897DF /* New Game */,
+				FAA358C51C7A5E20003897DF /* Data Models */,
 				FA4355FE1C74D5B3007E36DF /* Assets.xcassets */,
 				FA4356001C74D5B3007E36DF /* LaunchScreen.storyboard */,
 				FA4356031C74D5B3007E36DF /* Info.plist */,
 			);
 			path = LocalPoker;
+			sourceTree = "<group>";
+		};
+		FAA358C11C7A5DFE003897DF /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				FA4355F91C74D5B3007E36DF /* ViewController.swift */,
+				FA4355FB1C74D5B3007E36DF /* Main.storyboard */,
+			);
+			name = Events;
+			sourceTree = "<group>";
+		};
+		FAA358C21C7A5E06003897DF /* New Game */ = {
+			isa = PBXGroup;
+			children = (
+				FA43560C1C74DCB1007E36DF /* NewGameTableViewController.swift */,
+				FA43560E1C74F739007E36DF /* DatePickerViewController.swift */,
+				FA4BE5771C7A2F86007FE7F7 /* NewGame.storyboard */,
+			);
+			name = "New Game";
+			sourceTree = "<group>";
+		};
+		FAA358C51C7A5E20003897DF /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				FAA358C31C7A5E1C003897DF /* Event.swift */,
+			);
+			name = "Data Models";
+			sourceTree = "<group>";
+		};
+		FAA358CA1C7A6314003897DF /* Event Detail */ = {
+			isa = PBXGroup;
+			children = (
+				FAA358C81C7A630C003897DF /* EventDetailViewController.swift */,
+				FAA358C61C7A62FA003897DF /* EventDetail.storyboard */,
+			);
+			name = "Event Detail";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +190,7 @@
 				FA4356021C74D5B3007E36DF /* LaunchScreen.storyboard in Resources */,
 				FA4BE5791C7A2F86007FE7F7 /* NewGame.storyboard in Resources */,
 				FA4355FF1C74D5B3007E36DF /* Assets.xcassets in Resources */,
+				FAA358C71C7A62FA003897DF /* EventDetail.storyboard in Resources */,
 				FA4355FD1C74D5B3007E36DF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,10 +202,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA358C91C7A630C003897DF /* EventDetailViewController.swift in Sources */,
 				FA43560F1C74F739007E36DF /* DatePickerViewController.swift in Sources */,
 				FA4355FA1C74D5B3007E36DF /* ViewController.swift in Sources */,
 				FA43560D1C74DCB1007E36DF /* NewGameTableViewController.swift in Sources */,
 				FA4355F81C74D5B3007E36DF /* AppDelegate.swift in Sources */,
+				FAA358C41C7A5E1C003897DF /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
