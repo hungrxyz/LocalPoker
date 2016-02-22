@@ -19,6 +19,8 @@
 		FAA358C41C7A5E1C003897DF /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA358C31C7A5E1C003897DF /* Event.swift */; };
 		FAA358C71C7A62FA003897DF /* EventDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA358C61C7A62FA003897DF /* EventDetail.storyboard */; };
 		FAA358C91C7A630C003897DF /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA358C81C7A630C003897DF /* EventDetailViewController.swift */; };
+		FAA358CC1C7A7C0D003897DF /* PlayerProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA358CB1C7A7C0D003897DF /* PlayerProfile.storyboard */; };
+		FAA358CF1C7A7C45003897DF /* PlayerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA358CE1C7A7C45003897DF /* PlayerProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		FAA358C31C7A5E1C003897DF /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		FAA358C61C7A62FA003897DF /* EventDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventDetail.storyboard; sourceTree = "<group>"; };
 		FAA358C81C7A630C003897DF /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		FAA358CB1C7A7C0D003897DF /* PlayerProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlayerProfile.storyboard; sourceTree = "<group>"; };
+		FAA358CE1C7A7C45003897DF /* PlayerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 				FA4356091C74D5C0007E36DF /* LocalPoker.entitlements */,
 				FA4355F71C74D5B3007E36DF /* AppDelegate.swift */,
 				FAA358C11C7A5DFE003897DF /* Events */,
+				FAA358CD1C7A7C20003897DF /* Player Profile */,
 				FAA358CA1C7A6314003897DF /* Event Detail */,
 				FAA358C21C7A5E06003897DF /* New Game */,
 				FAA358C51C7A5E20003897DF /* Data Models */,
@@ -118,6 +123,15 @@
 				FAA358C61C7A62FA003897DF /* EventDetail.storyboard */,
 			);
 			name = "Event Detail";
+			sourceTree = "<group>";
+		};
+		FAA358CD1C7A7C20003897DF /* Player Profile */ = {
+			isa = PBXGroup;
+			children = (
+				FAA358CE1C7A7C45003897DF /* PlayerProfileViewController.swift */,
+				FAA358CB1C7A7C0D003897DF /* PlayerProfile.storyboard */,
+			);
+			name = "Player Profile";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +206,7 @@
 				FA4355FF1C74D5B3007E36DF /* Assets.xcassets in Resources */,
 				FAA358C71C7A62FA003897DF /* EventDetail.storyboard in Resources */,
 				FA4355FD1C74D5B3007E36DF /* Main.storyboard in Resources */,
+				FAA358CC1C7A7C0D003897DF /* PlayerProfile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +220,7 @@
 				FAA358C91C7A630C003897DF /* EventDetailViewController.swift in Sources */,
 				FA43560F1C74F739007E36DF /* DatePickerViewController.swift in Sources */,
 				FA4355FA1C74D5B3007E36DF /* ViewController.swift in Sources */,
+				FAA358CF1C7A7C45003897DF /* PlayerProfileViewController.swift in Sources */,
 				FA43560D1C74DCB1007E36DF /* NewGameTableViewController.swift in Sources */,
 				FA4355F81C74D5B3007E36DF /* AppDelegate.swift in Sources */,
 				FAA358C41C7A5E1C003897DF /* Event.swift in Sources */,

@@ -48,17 +48,6 @@ class ViewController: UIViewController {
 				self.events = results
 			}
 		}
-		
-		
-//		container.fetchUserRecordIDWithCompletionHandler { userRecord, error in
-//			if let error = error {
-//				print(error)
-//			} else if let userRecord = userRecord {
-//				print(userRecord.recordName)
-//			}
-//			
-//		}
-		
 	}
 
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

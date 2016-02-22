@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="EventCell" textLabel="it2-Bd-dbX" detailTextLabel="wkL-aB-Yxl" style="IBUITableViewCellStyleValue1" id="qgN-sj-Dve">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EventCell" textLabel="it2-Bd-dbX" detailTextLabel="wkL-aB-Yxl" style="IBUITableViewCellStyleValue1" id="qgN-sj-Dve">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qgN-sj-Dve" id="4tk-kx-YSS">
@@ -62,6 +62,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Events" id="3cH-ew-Uk1">
+                        <barButtonItem key="leftBarButtonItem" title="Profile" id="gUo-ba-yDV">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="D58-t6-GQ6" kind="push" id="1x8-sP-VR0"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cdc-wc-pza">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -107,7 +113,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z7d-df-CQT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1191.5" y="464"/>
+            <point key="canvasLocation" x="1188.5" y="413"/>
         </scene>
         <!--EventDetail-->
         <scene sceneID="Vza-PZ-J9h">
@@ -117,7 +123,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qRy-Md-aRv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1223" y="711"/>
+            <point key="canvasLocation" x="1188" y="464"/>
+        </scene>
+        <!--PlayerProfile-->
+        <scene sceneID="7CW-xt-6el">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PlayerProfile" id="D58-t6-GQ6" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="uhB-t3-jhC"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WwV-KA-3mk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1188" y="514"/>
         </scene>
     </scenes>
 </document>

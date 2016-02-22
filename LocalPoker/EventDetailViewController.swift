@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class EventDetailViewController: UIViewController {
 	
@@ -34,6 +35,7 @@ class EventDetailViewController: UIViewController {
 	}
 	
 	@IBAction func countMeInTapped(sender: AnyObject) {
+		
 	}
 	
 	@IBAction func noGoingTapped(sender: AnyObject) {
