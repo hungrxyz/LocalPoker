@@ -18,6 +18,7 @@ class EventDetailViewController: UIViewController {
 	@IBOutlet weak var buyInLabel: UILabel!
 	@IBOutlet weak var blindsLabel: UILabel!
 	@IBOutlet weak var additionalInfoLabel: UILabel!
+	@IBOutlet weak var playersTableView: UITableView!
 	
 	var event: Event!
 	
@@ -32,29 +33,64 @@ class EventDetailViewController: UIViewController {
 		buyInLabel.text = event.buyIn
 		blindsLabel.text = event.blinds
 		additionalInfoLabel.text = event.additionalInfo
+		
+		let eventReference = CKReference(recordID: CKRecordID(recordName: event.id), action: .DeleteSelf)
+		let predicate = NSPredicate(format: "event == %@", eventReference)
+		let sort = NSSortDescriptor(key: "creationDate", ascending: true)
+		let query = CKQuery(recordType: "RSVP", predicate: predicate)
+		query.sortDescriptors = [sort]
+		
+		CKContainer.defaultContainer().publicCloudDatabase.performQuery(query, inZoneWithID: nil) { (records, error) -> Void in
+			if let error = error {
+				print(error)
+			} else if let records = records {
+				print(records)
+			}
+		}
 	}
 	
 	@IBAction func countMeInTapped(sender: AnyObject) {
-		
+		saveRsvp(true)
 	}
 	
 	@IBAction func noGoingTapped(sender: AnyObject) {
+		saveRsvp(false)
 	}
 	
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
+	func saveRsvp(going: Bool) {
+		if registeredPlayer() {
+			let rsvp = CKRecord(recordType: "RSVP")
+			let eventReference = CKReference(recordID: CKRecordID(recordName: event.id), action: .DeleteSelf)
+			let playerReference = CKReference(recordID: CKRecordID(recordName: NSUserDefaults.standardUserDefaults().valueForKey("userRecordID") as! String), action: .DeleteSelf)
+			rsvp["event"] = eventReference
+			rsvp["player"] = playerReference
+			rsvp["going"] = going
+			
+			CKContainer.defaultContainer().publicCloudDatabase.saveRecord(rsvp, completionHandler: { (record, error) -> Void in
+				if let error = error {
+					print(error)
+				} else if let record = record {
+					print(record)
+				}
+			})
+		} else {
+			print("No player registered")
+		}
 	}
 	
-	
-	/*
-	// MARK: - Navigation
-	
-	// In a storyboard-based application, you will often want to do a little preparation before navigation
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-	// Get the new view controller using segue.destinationViewController.
-	// Pass the selected object to the new view controller.
+	func registeredPlayer() -> Bool {
+		return NSUserDefaults.standardUserDefaults().valueForKey("userRecordID") == nil ? false : true
 	}
-	*/
+}
+
+extension EventDetailViewController: UITableViewDataSource {
+	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return 0
+	}
 	
+	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCellWithIdentifier("PlayerCell", forIndexPath: indexPath) as! EventPlayerCell
+		
+		return cell
+	}
 }

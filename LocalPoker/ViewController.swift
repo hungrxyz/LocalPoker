@@ -24,6 +24,8 @@ class ViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		print(NSUserDefaults.standardUserDefaults().valueForKey("userRecordID") as! String)
 		
 		let container = CKContainer.defaultContainer()
 		let publicDB = container.publicCloudDatabase
@@ -35,7 +37,8 @@ class ViewController: UIViewController {
 			} else if let result = result {
 				var results = [Event]()
 				for record in result {
-					let event = Event(name: record["name"] as! String,
+					let event = Event(id: record.recordID.recordName,
+						name: record["name"] as! String,
 						date: record["date"] as! NSDate,
 						location: record["location"] as! String,
 						minPeople: record["minPeople"] as! Int,
