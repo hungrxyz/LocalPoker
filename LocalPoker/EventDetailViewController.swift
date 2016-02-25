@@ -21,6 +21,13 @@ class EventDetailViewController: UIViewController {
 	@IBOutlet weak var playersTableView: UITableView!
 	
 	var event: Event!
+	var players = [PlayerRSVP]() {
+		didSet {
+			dispatch_async(dispatch_get_main_queue()) { () -> Void in
+				self.playersTableView.reloadData()
+			}
+		}
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -45,6 +52,32 @@ class EventDetailViewController: UIViewController {
 				print(error)
 			} else if let records = records {
 				print(records)
+				var recordIDs = [CKRecordID]()
+				for record in records {
+					recordIDs.append((record["player"] as! CKReference).recordID)
+					print((record["player"] as! CKReference).recordID.recordName)
+				}
+				CKContainer.defaultContainer().publicCloudDatabase.fetchRecordWithID(recordIDs[0], completionHandler: { (record, error) -> Void in
+					if let error = error {
+						print(error)
+					} else if let record = record {
+						print(record)
+					}
+				})
+				let fetchOperation = CKFetchRecordsOperation(recordIDs: recordIDs)
+				fetchOperation.perRecordCompletionBlock = { playerRecord, playerRecordID, error in
+					if let error = error {
+						print(error)
+					} else if let playerRecord = playerRecord {
+						print(playerRecord)
+						let playerRSVP = PlayerRSVP(id: playerRecord.recordID.recordName, pokerName: playerRecord["pokerName"] as! String, going: playerRecord["going"] as! Bool)
+						self.players.append(playerRSVP)
+					}
+				}
+				fetchOperation.completionBlock = {
+					print("Finished")
+				}
+				fetchOperation.start()
 			}
 		}
 	}
@@ -85,12 +118,28 @@ class EventDetailViewController: UIViewController {
 
 extension EventDetailViewController: UITableViewDataSource {
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 0
+		return players.count
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("PlayerCell", forIndexPath: indexPath) as! EventPlayerCell
+		print("Hello")
+		let player = players[indexPath.row]
+		cell.pokerNameLabel.text = player.pokerName
+		cell.rsvpStatusLabel.text = player.going ? "GOING" : "NOT GOING"
 		
 		return cell
+	}
+}
+
+class PlayerRSVP {
+	var id: String
+	var pokerName: String
+	var going: Bool
+	
+	init(id: String, pokerName: String, going: Bool) {
+		self.id = id
+		self.pokerName = pokerName
+		self.going = going
 	}
 }
