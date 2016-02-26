@@ -51,33 +51,38 @@ class EventDetailViewController: UIViewController {
 			if let error = error {
 				print(error)
 			} else if let records = records {
-				print(records)
-				var recordIDs = [CKRecordID]()
+//				var recordIDs = [CKRecordID]()
 				for record in records {
-					recordIDs.append((record["player"] as! CKReference).recordID)
-					print((record["player"] as! CKReference).recordID.recordName)
+//					recordIDs.append((record["player"] as! CKReference).recordID)
+//					print((record["player"] as! CKReference).recordID.recordName)
+					CKContainer.defaultContainer().publicCloudDatabase.fetchRecordWithID((record["player"] as! CKReference).recordID, completionHandler: { (player, error) -> Void in
+						if let error = error {
+							print(error)
+						} else if let player = player {
+							let playerRSVP = PlayerRSVP(id: record.recordID.recordName, pokerName: player["pokerName"] as! String, going: record["going"] as! Bool)
+							self.players.append(playerRSVP)
+						}
+					})
 				}
-				CKContainer.defaultContainer().publicCloudDatabase.fetchRecordWithID(recordIDs[0], completionHandler: { (record, error) -> Void in
-					if let error = error {
-						print(error)
-					} else if let record = record {
-						print(record)
-					}
-				})
-				let fetchOperation = CKFetchRecordsOperation(recordIDs: recordIDs)
-				fetchOperation.perRecordCompletionBlock = { playerRecord, playerRecordID, error in
-					if let error = error {
-						print(error)
-					} else if let playerRecord = playerRecord {
-						print(playerRecord)
-						let playerRSVP = PlayerRSVP(id: playerRecord.recordID.recordName, pokerName: playerRecord["pokerName"] as! String, going: playerRecord["going"] as! Bool)
-						self.players.append(playerRSVP)
-					}
-				}
-				fetchOperation.completionBlock = {
-					print("Finished")
-				}
-				fetchOperation.start()
+//				for recordID in recordIDs {
+//				}
+//				dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//					self.playersTableView.reloadData()
+//				})
+//				let fetchOperation = CKFetchRecordsOperation(recordIDs: recordIDs)
+//				fetchOperation.perRecordCompletionBlock = { playerRecord, playerRecordID, error in
+//					if let error = error {
+//						print(error)
+//					} else if let playerRecord = playerRecord {
+//						print(playerRecord)
+//						let playerRSVP = PlayerRSVP(id: playerRecord.recordID.recordName, pokerName: playerRecord["pokerName"] as! String, going: playerRecord["going"] as! Bool)
+//						self.players.append(playerRSVP)
+//					}
+//				}
+//				fetchOperation.completionBlock = {
+//					print("Finished")
+//				}
+//				fetchOperation.start()
 			}
 		}
 	}
@@ -103,7 +108,7 @@ class EventDetailViewController: UIViewController {
 				if let error = error {
 					print(error)
 				} else if let record = record {
-					print(record)
+//
 				}
 			})
 		} else {
@@ -123,7 +128,6 @@ extension EventDetailViewController: UITableViewDataSource {
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("PlayerCell", forIndexPath: indexPath) as! EventPlayerCell
-		print("Hello")
 		let player = players[indexPath.row]
 		cell.pokerNameLabel.text = player.pokerName
 		cell.rsvpStatusLabel.text = player.going ? "GOING" : "NOT GOING"
