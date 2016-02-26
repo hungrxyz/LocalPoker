@@ -29,7 +29,7 @@ class NewGameTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		
+		getPokerName()
 	}
 	
 	@IBAction func minPeopleStepperValueChanged(sender: UIStepper) {
@@ -41,25 +41,40 @@ class NewGameTableViewController: UITableViewController {
 	}
 	
 	@IBAction func createEventTapped(sender: AnyObject) {
-		let newEvent = CKRecord(recordType: "Event")
-		newEvent.setValue(eventNameTextField.text, forKey: "name")
-		newEvent.setValue(eventDate, forKey: "date")
-		newEvent.setValue(locationTextField.text, forKey: "location")
-		newEvent.setValue(Int(minPeopleLabel.text!), forKey: "minPeople")
-		newEvent.setValue(Int(maxPeopleLabel.text!), forKey: "maxPeople")
-		newEvent.setValue(buyInTextField.text, forKey: "buyIn")
-		newEvent.setValue(blindsTextField.text, forKey: "blinds")
-		newEvent.setValue(additionalInfoTextView.text, forKey: "additionalInformation")
-		
-		CKContainer.defaultContainer().publicCloudDatabase.saveRecord(newEvent) { record, error in
-			if let error = error {
-				print(error)
-			} else if let record = record {
-				print(record)
-			}
+		if let pokerName = getPokerName() {
+			let newEvent = CKRecord(recordType: "Event")
+			newEvent.setValue(pokerName, forKey: "host")
+			newEvent.setValue(eventNameTextField.text, forKey: "name")
+			newEvent.setValue(eventDate, forKey: "date")
+			newEvent.setValue(locationTextField.text, forKey: "location")
+			newEvent.setValue(Int(minPeopleLabel.text!), forKey: "minPlayers")
+			newEvent.setValue(Int(maxPeopleLabel.text!), forKey: "maxPlayers")
+			newEvent.setValue(buyInTextField.text, forKey: "buyIn")
+			newEvent.setValue(blindsTextField.text, forKey: "blinds")
+			newEvent.setValue(additionalInfoTextView.text, forKey: "additionalInfo")
 			
+			CKContainer.defaultContainer().publicCloudDatabase.saveRecord(newEvent) { record, error in
+				if let error = error {
+					print(error)
+				} else if let record = record {
+					print(record)
+				}
+			}
 		}
-		
+	}
+	
+	func getPokerName() -> String? {
+		if let pokerName = NSUserDefaults.standardUserDefaults().valueForKey("pokerName") as? String {
+			return pokerName
+		} else {
+			let alert = UIAlertController(title: "No Player Account", message: "You need to have a poker name to create a new event.\nCreate it under Profile", preferredStyle: .Alert)
+			alert.addAction(UIAlertAction(title: "Profile", style: .Default, handler: { (action) -> Void in
+				self.performSegueWithIdentifier("newEventProfileSegue", sender: self)
+			}))
+			alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+			self.presentViewController(alert, animated: true, completion: nil)
+		}
+		return nil
 	}
 	
 	@IBAction func unwindToNewGame(segue: UIStoryboardSegue) {
@@ -69,6 +84,14 @@ class NewGameTableViewController: UITableViewController {
 			}
 		}
 	}
+}
+
+extension NewGameTableViewController {
+	override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 30
+	}
 	
-	
+	override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+		return 5
+	}
 }

@@ -68,10 +68,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Events" id="3cH-ew-Uk1">
-                        <barButtonItem key="leftBarButtonItem" title="Profile" id="gUo-ba-yDV">
+                        <barButtonItem key="leftBarButtonItem" title="Player Profile" id="gUo-ba-yDV">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="D58-t6-GQ6" kind="push" id="1x8-sP-VR0"/>
+                                <segue destination="D58-t6-GQ6" kind="modal" id="1x8-sP-VR0"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cdc-wc-pza">

@@ -99,7 +99,7 @@ class EventDetailViewController: UIViewController {
 		if registeredPlayer() {
 			let rsvp = CKRecord(recordType: "RSVP")
 			let eventReference = CKReference(recordID: CKRecordID(recordName: event.id), action: .DeleteSelf)
-			let playerReference = CKReference(recordID: CKRecordID(recordName: NSUserDefaults.standardUserDefaults().valueForKey("userRecordID") as! String), action: .DeleteSelf)
+			let playerReference = CKReference(recordID: CKRecordID(recordName: NSUserDefaults.standardUserDefaults().valueForKey("pokerName") as! String), action: .DeleteSelf)
 			rsvp["event"] = eventReference
 			rsvp["player"] = playerReference
 			rsvp["going"] = going

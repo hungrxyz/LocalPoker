@@ -92,4 +92,8 @@ class PlayerProfileViewController: UIViewController {
 			}
 		}
 	}
+	
+	@IBAction func dismissTapped(sender: AnyObject) {
+		dismissViewControllerAnimated(true, completion: nil)
+	}
 }

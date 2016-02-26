@@ -122,8 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				FAA358C81C7A630C003897DF /* EventDetailViewController.swift */,
-				FAA358C61C7A62FA003897DF /* EventDetail.storyboard */,
 				FA8F66061C7D2A30007B29DF /* EventPlayerCell.swift */,
+				FAA358C61C7A62FA003897DF /* EventDetail.storyboard */,
 			);
 			name = "Event Detail";
 			sourceTree = "<group>";

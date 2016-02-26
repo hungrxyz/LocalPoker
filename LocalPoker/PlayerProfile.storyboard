@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="VW9-a1-uM2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="nV0-h5-Wvk">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Profile-->
+        <!--Player Profile-->
         <scene sceneID="h6Z-ha-MGg">
             <objects>
                 <viewController id="VW9-a1-uM2" customClass="PlayerProfileViewController" customModule="LocalPoker" customModuleProvider="target" sceneMemberID="viewController">
@@ -64,8 +64,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="PWo-KK-884"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                <state key="normal" title="SAVE">
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Save Player Profile">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -83,7 +83,14 @@
                             <constraint firstAttribute="trailing" secondItem="O0E-QO-SBX" secondAttribute="trailing" constant="15" id="lWt-60-fXu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="PB0-un-Prv"/>
+                    <navigationItem key="navigationItem" title="Player Profile" id="PB0-un-Prv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="8QU-8O-QDo">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="dismissTapped:" destination="VW9-a1-uM2" id="qK0-bM-Gou"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO">
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -94,6 +101,26 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hpC-vt-vTl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1134" y="522"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="U7e-dD-iBv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nV0-h5-Wvk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="nFH-kU-dd3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VW9-a1-uM2" kind="relationship" relationship="rootViewController" id="v45-yZ-5Bh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="shU-Bs-B1k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="602" y="522"/>
         </scene>
