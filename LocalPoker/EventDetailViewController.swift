@@ -11,6 +11,7 @@ import CloudKit
 
 class EventDetailViewController: UIViewController {
 	
+	@IBOutlet weak var hostLabel: UILabel!
 	@IBOutlet weak var dateLabel: UILabel!
 	@IBOutlet weak var locationLabel: UILabel!
 	@IBOutlet weak var minPeopleLabel: UILabel!
@@ -21,18 +22,13 @@ class EventDetailViewController: UIViewController {
 	@IBOutlet weak var playersTableView: UITableView!
 	
 	var event: Event!
-	var players = [PlayerRSVP]() {
-		didSet {
-			dispatch_async(dispatch_get_main_queue()) { () -> Void in
-				self.playersTableView.reloadData()
-			}
-		}
-	}
+	var rsvps = [RSVP]()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		title = event.name
+		hostLabel.text = event.host
 		dateLabel.text = "\(event.date)"
 		locationLabel.text = event.location
 		minPeopleLabel.text = event.minPeople.description
@@ -51,38 +47,13 @@ class EventDetailViewController: UIViewController {
 			if let error = error {
 				print(error)
 			} else if let records = records {
-//				var recordIDs = [CKRecordID]()
 				for record in records {
-//					recordIDs.append((record["player"] as! CKReference).recordID)
-//					print((record["player"] as! CKReference).recordID.recordName)
-					CKContainer.defaultContainer().publicCloudDatabase.fetchRecordWithID((record["player"] as! CKReference).recordID, completionHandler: { (player, error) -> Void in
-						if let error = error {
-							print(error)
-						} else if let player = player {
-							let playerRSVP = PlayerRSVP(id: record.recordID.recordName, pokerName: player["pokerName"] as! String, going: record["going"] as! Bool)
-							self.players.append(playerRSVP)
-						}
-					})
+					let rsvp = RSVP(rsvpId: record.recordID.recordName, event: record["event"] as! CKReference, player: record["player"] as! CKReference, going: record["going"] as! Bool)
+					self.rsvps.append(rsvp)
 				}
-//				for recordID in recordIDs {
-//				}
-//				dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//					self.playersTableView.reloadData()
-//				})
-//				let fetchOperation = CKFetchRecordsOperation(recordIDs: recordIDs)
-//				fetchOperation.perRecordCompletionBlock = { playerRecord, playerRecordID, error in
-//					if let error = error {
-//						print(error)
-//					} else if let playerRecord = playerRecord {
-//						print(playerRecord)
-//						let playerRSVP = PlayerRSVP(id: playerRecord.recordID.recordName, pokerName: playerRecord["pokerName"] as! String, going: playerRecord["going"] as! Bool)
-//						self.players.append(playerRSVP)
-//					}
-//				}
-//				fetchOperation.completionBlock = {
-//					print("Finished")
-//				}
-//				fetchOperation.start()
+				dispatch_async(dispatch_get_main_queue(), { () -> Void in
+					self.playersTableView.reloadData()
+				})
 			}
 		}
 	}
@@ -96,54 +67,73 @@ class EventDetailViewController: UIViewController {
 	}
 	
 	func saveRsvp(going: Bool) {
-		if registeredPlayer() {
-			let rsvp = CKRecord(recordType: "RSVP")
-			let eventReference = CKReference(recordID: CKRecordID(recordName: event.id), action: .DeleteSelf)
-			let playerReference = CKReference(recordID: CKRecordID(recordName: NSUserDefaults.standardUserDefaults().valueForKey("pokerName") as! String), action: .DeleteSelf)
-			rsvp["event"] = eventReference
-			rsvp["player"] = playerReference
-			rsvp["going"] = going
-			
-			CKContainer.defaultContainer().publicCloudDatabase.saveRecord(rsvp, completionHandler: { (record, error) -> Void in
-				if let error = error {
-					print(error)
-				} else if let record = record {
-//
-				}
-			})
-		} else {
-			print("No player registered")
+		if let pokerName = NSUserDefaults.standardUserDefaults().stringForKey("pokerName") {
+			if rsvps.contains({ $0.player.recordID.recordName == NSUserDefaults.standardUserDefaults().stringForKey("pokerName")! }) {
+				let rsvp = rsvps[rsvps.indexOf({ $0.player.recordID.recordName == pokerName })!]
+				CKContainer.defaultContainer().publicCloudDatabase.fetchRecordWithID(CKRecordID(recordName: rsvp.rsvpId), completionHandler: { (record, error) -> Void in
+					if let error = error {
+						print(error)
+					} else if let record = record {
+						record["going"] = going
+						
+						CKContainer.defaultContainer().publicCloudDatabase.saveRecord(record, completionHandler: { (savedRecord, savedError) -> Void in
+							if let saveError = savedError {
+								print(saveError)
+							} else if let _ = savedRecord {
+								dispatch_async(dispatch_get_main_queue(), { () -> Void in
+									self.playersTableView.beginUpdates()
+									rsvp.going = going
+									self.playersTableView.endUpdates()
+								})
+							}
+						})
+					}
+				})
+			} else {
+				let rsvp = CKRecord(recordType: "RSVP")
+				let eventReference = CKReference(recordID: CKRecordID(recordName: event.id), action: .DeleteSelf)
+				let playerReference = CKReference(recordID: CKRecordID(recordName: NSUserDefaults.standardUserDefaults().valueForKey("pokerName") as! String), action: .DeleteSelf)
+				rsvp["rsvpId"] = rsvp.recordID.recordName
+				rsvp["event"] = eventReference
+				rsvp["player"] = playerReference
+				rsvp["going"] = going
+				
+				CKContainer.defaultContainer().publicCloudDatabase.saveRecord(rsvp, completionHandler: { (record, error) -> Void in
+					if let error = error {
+						print(error)
+					} else if let record = record {
+						dispatch_async(dispatch_get_main_queue(), { () -> Void in
+							let rsvp = RSVP(rsvpId: record.recordID.recordName, event: record["event"] as! CKReference, player: record["player"] as! CKReference, going: record["going"] as! Bool)
+							self.rsvps.append(rsvp)
+							self.playersTableView.reloadData()
+						})
+					}
+				})
+			}
 		}
-	}
-	
-	func registeredPlayer() -> Bool {
-		return NSUserDefaults.standardUserDefaults().valueForKey("userRecordID") == nil ? false : true
 	}
 }
 
 extension EventDetailViewController: UITableViewDataSource {
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return players.count
+		if rsvps.isEmpty {
+			return 1
+		}
+		return rsvps.count
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("PlayerCell", forIndexPath: indexPath) as! EventPlayerCell
-		let player = players[indexPath.row]
-		cell.pokerNameLabel.text = player.pokerName
-		cell.rsvpStatusLabel.text = player.going ? "GOING" : "NOT GOING"
+		
+		if rsvps.isEmpty {
+			cell.pokerNameLabel.text = "No one RSVPed yet"
+			cell.rsvpStatusLabel.hidden = true
+		} else {
+			let rsvp = rsvps[indexPath.row]
+			cell.pokerNameLabel.text = rsvp.player.recordID.recordName
+			cell.rsvpStatusLabel.text = rsvp.going ? "GOING" : "NOT GOING"
+		}
 		
 		return cell
-	}
-}
-
-class PlayerRSVP {
-	var id: String
-	var pokerName: String
-	var going: Bool
-	
-	init(id: String, pokerName: String, going: Bool) {
-		self.id = id
-		self.pokerName = pokerName
-		self.going = going
 	}
 }

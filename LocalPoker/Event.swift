@@ -10,6 +10,7 @@ import Foundation
 
 class Event {
 	var id: String
+	var host: String
 	var name: String
 	var date: NSDate
 	var location: String
@@ -19,8 +20,9 @@ class Event {
 	var blinds: String
 	var additionalInfo: String
 	
-	init(id: String, name: String, date: NSDate, location: String, minPeople: Int, maxPeople: Int, buyIn: String, blinds: String, additionalInfo: String) {
+	init(id: String, host: String, name: String, date: NSDate, location: String, minPeople: Int, maxPeople: Int, buyIn: String, blinds: String, additionalInfo: String) {
 		self.id = id
+		self.host = host
 		self.name = name
 		self.date = date
 		self.location = location

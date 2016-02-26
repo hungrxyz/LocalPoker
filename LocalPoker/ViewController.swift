@@ -24,8 +24,6 @@ class ViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
-		print(NSUserDefaults.standardUserDefaults().valueForKey("userRecordID") as! String)
 		
 		let container = CKContainer.defaultContainer()
 		let publicDB = container.publicCloudDatabase
@@ -38,14 +36,15 @@ class ViewController: UIViewController {
 				var results = [Event]()
 				for record in result {
 					let event = Event(id: record.recordID.recordName,
+						host: record["host"] as! String,
 						name: record["name"] as! String,
 						date: record["date"] as! NSDate,
 						location: record["location"] as! String,
-						minPeople: record["minPeople"] as! Int,
-						maxPeople: record["maxPeople"] as! Int,
+						minPeople: record["minPlayers"] as! Int,
+						maxPeople: record["maxPlayers"] as! Int,
 						buyIn: record["buyIn"] as! String,
 						blinds: record["blinds"] as! String,
-						additionalInfo: record["additionalInformation"] as! String)
+						additionalInfo: record["additionalInfo"] as! String)
 					results.append(event)
 				}
 				self.events = results
@@ -62,15 +61,22 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource {
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		if events.isEmpty {
+			return 1
+		}
 		return events.count
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath)
 		
-		let event = events[indexPath.row]
-		
-		cell.textLabel?.text = event.name
+		if events.isEmpty {
+			cell.textLabel?.text = "No events scheduled"
+			cell.detailTextLabel?.hidden = true
+		} else {
+			let event = events[indexPath.row]
+			cell.textLabel?.text = event.name
+		}
 		
 		return cell
 	}

@@ -16,6 +16,7 @@
 		FA43560D1C74DCB1007E36DF /* NewGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA43560C1C74DCB1007E36DF /* NewGameTableViewController.swift */; };
 		FA43560F1C74F739007E36DF /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA43560E1C74F739007E36DF /* DatePickerViewController.swift */; };
 		FA4BE5791C7A2F86007FE7F7 /* NewGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4BE5771C7A2F86007FE7F7 /* NewGame.storyboard */; };
+		FA4E9C0A1C80FC9200DF320E /* RSVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E9C091C80FC9200DF320E /* RSVP.swift */; };
 		FA8F66071C7D2A30007B29DF /* EventPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F66061C7D2A30007B29DF /* EventPlayerCell.swift */; };
 		FAA358C41C7A5E1C003897DF /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA358C31C7A5E1C003897DF /* Event.swift */; };
 		FAA358C71C7A62FA003897DF /* EventDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA358C61C7A62FA003897DF /* EventDetail.storyboard */; };
@@ -37,6 +38,7 @@
 		FA43560C1C74DCB1007E36DF /* NewGameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameTableViewController.swift; sourceTree = "<group>"; };
 		FA43560E1C74F739007E36DF /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		FA4BE5781C7A2F86007FE7F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NewGame.storyboard; sourceTree = "<group>"; };
+		FA4E9C091C80FC9200DF320E /* RSVP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSVP.swift; sourceTree = "<group>"; };
 		FA8F66061C7D2A30007B29DF /* EventPlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPlayerCell.swift; sourceTree = "<group>"; };
 		FAA358C31C7A5E1C003897DF /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		FAA358C61C7A62FA003897DF /* EventDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventDetail.storyboard; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				FAA358C31C7A5E1C003897DF /* Event.swift */,
+				FA4E9C091C80FC9200DF320E /* RSVP.swift */,
 			);
 			name = "Data Models";
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				FAA358C91C7A630C003897DF /* EventDetailViewController.swift in Sources */,
 				FA43560F1C74F739007E36DF /* DatePickerViewController.swift in Sources */,
 				FA4355FA1C74D5B3007E36DF /* ViewController.swift in Sources */,
+				FA4E9C0A1C80FC9200DF320E /* RSVP.swift in Sources */,
 				FAA358CF1C7A7C45003897DF /* PlayerProfileViewController.swift in Sources */,
 				FA43560D1C74DCB1007E36DF /* NewGameTableViewController.swift in Sources */,
 				FA4355F81C74D5B3007E36DF /* AppDelegate.swift in Sources */,

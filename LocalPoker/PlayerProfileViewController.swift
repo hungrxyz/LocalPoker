@@ -36,7 +36,7 @@ class PlayerProfileViewController: UIViewController {
 					print(error)
 				} else if let userRecord = userRecord {
 					print(userRecord.recordName)
-					let query = CKQuery(recordType: "Player", predicate: NSPredicate(format: "userRecordID == %@", userRecord.recordName))
+					let query = CKQuery(recordType: "Player", predicate: NSPredicate(format: "createdBy == %@", userRecord.recordName))
 					self.publicDatabase.performQuery(query, inZoneWithID: nil, completionHandler: { (records, error) -> Void in
 						if let error = error {
 							print(error)
