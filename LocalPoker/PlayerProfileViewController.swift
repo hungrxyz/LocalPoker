@@ -8,6 +8,7 @@
 
 import UIKit
 import CloudKit
+import MBProgressHUD
 
 class PlayerProfileViewController: UIViewController {
 	
@@ -30,14 +31,23 @@ class PlayerProfileViewController: UIViewController {
 		
 		pokerName = NSUserDefaults.standardUserDefaults().valueForKey("pokerName") as? String
 		
+		let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+		hud.labelText = "Loading Player Profile..."
+
 		if pokerName == nil {
 			CKContainer.defaultContainer().fetchUserRecordIDWithCompletionHandler { userRecord, error in
 				if let error = error {
+					dispatch_async(dispatch_get_main_queue(), { () -> Void in
+						hud.hide(true)
+					})
 					print(error)
 				} else if let userRecord = userRecord {
 					print(userRecord.recordName)
 					let query = CKQuery(recordType: "Player", predicate: NSPredicate(format: "createdBy == %@", userRecord.recordName))
 					self.publicDatabase.performQuery(query, inZoneWithID: nil, completionHandler: { (records, error) -> Void in
+						dispatch_async(dispatch_get_main_queue(), { () -> Void in
+							hud.hide(true)
+						})
 						if let error = error {
 							print(error)
 							print("Player not registered yet")
@@ -54,6 +64,9 @@ class PlayerProfileViewController: UIViewController {
 			pokerNameTextField.enabled = false
 			let recordID = CKRecordID(recordName: pokerName)
 			publicDatabase.fetchRecordWithID(recordID) { record, error in
+				dispatch_async(dispatch_get_main_queue(), { () -> Void in
+					hud.hide(true)
+				})
 				if let error = error {
 					print(error)
 				} else if let record = record {

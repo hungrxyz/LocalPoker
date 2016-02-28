@@ -8,6 +8,7 @@
 
 import UIKit
 import CloudKit
+import MBProgressHUD
 
 class ViewController: UIViewController {
 
@@ -28,8 +29,14 @@ class ViewController: UIViewController {
 		let container = CKContainer.defaultContainer()
 		let publicDB = container.publicCloudDatabase
 		
+		let hud = MBProgressHUD.showHUDAddedTo(navigationController?.view.window, animated: true)
+		hud.labelText = "Loading Events..."
+		
 		let query = CKQuery(recordType: "Event", predicate: NSPredicate(value: true))
 		publicDB.performQuery(query, inZoneWithID: nil) { result, error in
+			dispatch_async(dispatch_get_main_queue(), { () -> Void in
+				hud.hide(true)
+			})
 			if let error = error {
 				print(error)
 			} else if let result = result {
