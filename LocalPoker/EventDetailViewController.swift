@@ -47,6 +47,7 @@ class EventDetailViewController: UIViewController {
 			if let error = error {
 				print(error)
 			} else if let records = records {
+//				print(records)
 				for record in records {
 					let rsvp = RSVP(rsvpId: record.recordID.recordName, event: record["event"] as! CKReference, player: record["player"] as! CKReference, going: record["going"] as! Bool)
 					self.rsvps.append(rsvp)
@@ -81,9 +82,8 @@ class EventDetailViewController: UIViewController {
 								print(saveError)
 							} else if let _ = savedRecord {
 								dispatch_async(dispatch_get_main_queue(), { () -> Void in
-									self.playersTableView.beginUpdates()
 									rsvp.going = going
-									self.playersTableView.endUpdates()
+									self.playersTableView.reloadData()
 								})
 							}
 						})
@@ -132,6 +132,7 @@ extension EventDetailViewController: UITableViewDataSource {
 			let rsvp = rsvps[indexPath.row]
 			cell.pokerNameLabel.text = rsvp.player.recordID.recordName
 			cell.rsvpStatusLabel.text = rsvp.going ? "GOING" : "NOT GOING"
+			cell.rsvpStatusLabel.hidden = false
 		}
 		
 		return cell

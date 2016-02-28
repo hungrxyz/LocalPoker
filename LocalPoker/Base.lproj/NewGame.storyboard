@@ -296,37 +296,54 @@
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="Fxj-mH-7kr">
                                 <rect key="frame" x="0.0" y="144" width="320" height="216"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <date key="date" timeIntervalSinceReferenceDate="477421605.89466202">
                                     <!--2016-02-17 17:06:45 +0000-->
                                 </date>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="datePickerValueChanged:" destination="gfY-6u-HDz" eventType="valueChanged" id="4wN-zH-PpL"/>
                                 </connections>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKz-Pw-jP3">
+                                <rect key="frame" x="0.0" y="375" width="320" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="tc2-iG-k9F"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="psc-uK-vaj" kind="unwind" unwindAction="unwindToNewGame:" id="R9T-vF-qaa"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8NR-fe-lCB">
-                                <rect key="frame" x="102" y="83" width="117" height="21"/>
+                                <rect key="frame" x="102" y="108" width="117" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Fxj-mH-7kr" firstAttribute="top" secondItem="8NR-fe-lCB" secondAttribute="bottom" constant="40" id="77d-kx-3Xz"/>
+                            <constraint firstItem="Fxj-mH-7kr" firstAttribute="top" secondItem="8NR-fe-lCB" secondAttribute="bottom" constant="15" id="77d-kx-3Xz"/>
                             <constraint firstItem="8NR-fe-lCB" firstAttribute="centerX" secondItem="4zF-Zs-hEW" secondAttribute="centerX" id="7tW-gu-7Za"/>
+                            <constraint firstAttribute="trailing" secondItem="AKz-Pw-jP3" secondAttribute="trailing" id="7zf-vR-6tl"/>
                             <constraint firstAttribute="trailing" secondItem="Fxj-mH-7kr" secondAttribute="trailing" id="BWY-Kf-DDq"/>
                             <constraint firstItem="Fxj-mH-7kr" firstAttribute="centerY" secondItem="4zF-Zs-hEW" secondAttribute="centerY" id="eJD-O7-NNe"/>
                             <constraint firstItem="Fxj-mH-7kr" firstAttribute="leading" secondItem="4zF-Zs-hEW" secondAttribute="leading" id="f58-y9-yJQ"/>
+                            <constraint firstItem="AKz-Pw-jP3" firstAttribute="top" secondItem="Fxj-mH-7kr" secondAttribute="bottom" constant="15" id="fsk-RN-neB"/>
+                            <constraint firstItem="AKz-Pw-jP3" firstAttribute="leading" secondItem="4zF-Zs-hEW" secondAttribute="leading" id="pis-sn-adD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Date and Time" id="XM4-3x-NaN">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="xPk-Il-wCe">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <segue destination="psc-uK-vaj" kind="unwind" unwindAction="unwindToNewGame:" id="ZDG-i6-C0Y"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Date and Time" id="XM4-3x-NaN"/>
                     <connections>
                         <outlet property="selectedDateLabel" destination="8NR-fe-lCB" id="dr4-iu-jN4"/>
                     </connections>

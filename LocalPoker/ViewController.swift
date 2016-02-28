@@ -76,6 +76,8 @@ extension ViewController: UITableViewDataSource {
 		} else {
 			let event = events[indexPath.row]
 			cell.textLabel?.text = event.name
+			cell.detailTextLabel?.text = event.date.description
+			cell.detailTextLabel?.hidden = false
 		}
 		
 		return cell
