@@ -43,7 +43,9 @@ class EventDetailViewController: UIViewController {
 		let query = CKQuery(recordType: "RSVP", predicate: predicate)
 		query.sortDescriptors = [sort]
 		
+		HUD.sharedHUD.show("Loading Event Players...")
 		CKContainer.defaultContainer().publicCloudDatabase.performQuery(query, inZoneWithID: nil) { (records, error) -> Void in
+			HUD.sharedHUD.hide()
 			if let error = error {
 				print(error)
 			} else if let records = records {
@@ -68,16 +70,19 @@ class EventDetailViewController: UIViewController {
 	}
 	
 	func saveRsvp(going: Bool) {
+		HUD.sharedHUD.show("Saving RSVP...")
 		if let pokerName = NSUserDefaults.standardUserDefaults().stringForKey("pokerName") {
 			if rsvps.contains({ $0.player.recordID.recordName == NSUserDefaults.standardUserDefaults().stringForKey("pokerName")! }) {
 				let rsvp = rsvps[rsvps.indexOf({ $0.player.recordID.recordName == pokerName })!]
 				CKContainer.defaultContainer().publicCloudDatabase.fetchRecordWithID(CKRecordID(recordName: rsvp.rsvpId), completionHandler: { (record, error) -> Void in
 					if let error = error {
+						HUD.sharedHUD.hide()
 						print(error)
 					} else if let record = record {
 						record["going"] = going
 						
 						CKContainer.defaultContainer().publicCloudDatabase.saveRecord(record, completionHandler: { (savedRecord, savedError) -> Void in
+							HUD.sharedHUD.hide()
 							if let saveError = savedError {
 								print(saveError)
 							} else if let _ = savedRecord {
@@ -99,6 +104,7 @@ class EventDetailViewController: UIViewController {
 				rsvp["going"] = going
 				
 				CKContainer.defaultContainer().publicCloudDatabase.saveRecord(rsvp, completionHandler: { (record, error) -> Void in
+					HUD.sharedHUD.hide()
 					if let error = error {
 						print(error)
 					} else if let record = record {

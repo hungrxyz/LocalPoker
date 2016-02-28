@@ -42,6 +42,7 @@ class NewGameTableViewController: UITableViewController {
 	
 	@IBAction func createEventTapped(sender: AnyObject) {
 		if let pokerName = getPokerName() {
+			HUD.sharedHUD.show("Creating New Event...")
 			let newEvent = CKRecord(recordType: "Event")
 			newEvent.setValue(pokerName, forKey: "host")
 			newEvent.setValue(eventNameTextField.text, forKey: "name")
@@ -54,6 +55,7 @@ class NewGameTableViewController: UITableViewController {
 			newEvent.setValue(additionalInfoTextView.text, forKey: "additionalInfo")
 			
 			CKContainer.defaultContainer().publicCloudDatabase.saveRecord(newEvent) { record, error in
+				HUD.sharedHUD.hide()
 				if let error = error {
 					print(error)
 				} else if let record = record {

@@ -8,7 +8,6 @@
 
 import UIKit
 import CloudKit
-import MBProgressHUD
 
 class PlayerProfileViewController: UIViewController {
 	
@@ -31,23 +30,17 @@ class PlayerProfileViewController: UIViewController {
 		
 		pokerName = NSUserDefaults.standardUserDefaults().valueForKey("pokerName") as? String
 		
-		let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-		hud.labelText = "Loading Player Profile..."
-
+		HUD.sharedHUD.show("Loading Player Profile...")
 		if pokerName == nil {
 			CKContainer.defaultContainer().fetchUserRecordIDWithCompletionHandler { userRecord, error in
 				if let error = error {
-					dispatch_async(dispatch_get_main_queue(), { () -> Void in
-						hud.hide(true)
-					})
+					HUD.sharedHUD.hide()
 					print(error)
 				} else if let userRecord = userRecord {
 					print(userRecord.recordName)
 					let query = CKQuery(recordType: "Player", predicate: NSPredicate(format: "createdBy == %@", userRecord.recordName))
 					self.publicDatabase.performQuery(query, inZoneWithID: nil, completionHandler: { (records, error) -> Void in
-						dispatch_async(dispatch_get_main_queue(), { () -> Void in
-							hud.hide(true)
-						})
+						HUD.sharedHUD.hide()
 						if let error = error {
 							print(error)
 							print("Player not registered yet")
@@ -64,9 +57,7 @@ class PlayerProfileViewController: UIViewController {
 			pokerNameTextField.enabled = false
 			let recordID = CKRecordID(recordName: pokerName)
 			publicDatabase.fetchRecordWithID(recordID) { record, error in
-				dispatch_async(dispatch_get_main_queue(), { () -> Void in
-					hud.hide(true)
-				})
+				HUD.sharedHUD.hide()
 				if let error = error {
 					print(error)
 				} else if let record = record {
@@ -78,6 +69,7 @@ class PlayerProfileViewController: UIViewController {
 	}
 	
 	@IBAction func saveTapped(sender: AnyObject) {
+		HUD.sharedHUD.show("Saving Player Profile...")
 		if let userRecord = userRecord {
 			userRecord.setValue(nameTextField.text, forKey: "name")
 			saveUserRecord(userRecord)
@@ -95,6 +87,7 @@ class PlayerProfileViewController: UIViewController {
 	
 	func saveUserRecord(record: CKRecord) {
 		publicDatabase.saveRecord(record) { record, error in
+			HUD.sharedHUD.hide()
 			if let error = error {
 				print(error)
 			} else if let record = record {
