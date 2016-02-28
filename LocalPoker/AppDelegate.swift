@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,9 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-		
+
 		let navigationController = window?.rootViewController as! UINavigationController
 		navigationController.navigationBar.tintColor = UIColor.whiteColor()
+		
+		let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: nil)
+		application.registerUserNotificationSettings(notificationSettings)
+		application.registerForRemoteNotifications()
+		
+		subscribeToNewEvents()
 		
 		return true
 	}
@@ -43,7 +50,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func applicationWillTerminate(application: UIApplication) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	}
+	
+	func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+		if let pushInfo = userInfo as? [String: NSObject] {
+			let notification = CKNotification(fromRemoteNotificationDictionary: pushInfo)
+			
+			print(notification)
+		}
+	}
 
-
+	private func subscribeToNewEvents() {
+		if !NSUserDefaults.standardUserDefaults().boolForKey("subscribedToEvents") {
+			let predicate = NSPredicate(value: true)
+			let subscription = CKSubscription(recordType: "Event", predicate: predicate, options: .FiresOnRecordCreation)
+			let notification = CKNotificationInfo()
+			notification.alertBody = "New Poker event has been scheduled, confirm your attendance."
+			notification.soundName = UILocalNotificationDefaultSoundName
+			notification.shouldBadge = true
+			subscription.notificationInfo = notification
+			
+			CKContainer.defaultContainer().publicCloudDatabase.saveSubscription(subscription, completionHandler: { (result, error) -> Void in
+				if let error = error {
+					print(error)
+				} else if let _ = result {
+					NSUserDefaults.standardUserDefaults().setBool(true, forKey: "subscribedToEvents")
+				}
+			})
+		}
+	}
 }
 
