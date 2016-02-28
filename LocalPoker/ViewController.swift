@@ -16,25 +16,39 @@ class ViewController: UIViewController {
 	var events = [Event]() {
 		didSet {
 			dispatch_async(dispatch_get_main_queue()) { () -> Void in
+				print("events")
 				self.tableView.reloadData()
+				self.refreshControl.endRefreshing()
 			}
 		}
 	}
 	var selectedEvent: Event!
+	lazy var refreshControl: UIRefreshControl = {
+		let refreshControl = UIRefreshControl()
+		refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: .ValueChanged)
+		
+		return refreshControl
+	}()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		loadEvents()
+		
+		tableView.addSubview(refreshControl)
+	}
+	
+	func loadEvents() {
+		HUD.sharedHUD.show("Loading Events...")
 		let container = CKContainer.defaultContainer()
 		let publicDB = container.publicCloudDatabase
-		
-		HUD.sharedHUD.show("Loading Events...")
 		let query = CKQuery(recordType: "Event", predicate: NSPredicate(value: true))
 		publicDB.performQuery(query, inZoneWithID: nil) { result, error in
 			HUD.sharedHUD.hide()
 			if let error = error {
 				print(error)
 			} else if let result = result {
+				print(result)
 				var results = [Event]()
 				for record in result {
 					let event = Event(id: record.recordID.recordName,
@@ -49,15 +63,27 @@ class ViewController: UIViewController {
 						additionalInfo: record["additionalInfo"] as! String)
 					results.append(event)
 				}
-				self.events = results
+				dispatch_async(dispatch_get_main_queue(), { () -> Void in
+					self.events = results
+				})
 			}
 		}
+	}
+	
+	func handleRefresh(refreshControll: UIRefreshControl) {
+		print("loading")
+		loadEvents()
 	}
 
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if let eventDetailViewController = segue.destinationViewController as? EventDetailViewController {
 			eventDetailViewController.event = selectedEvent
 		}
+	}
+	
+	@IBAction func unwindNewEventSegue(segue: UIStoryboardSegue) {
+		print("jahauza")
+		loadEvents()
 	}
 }
 

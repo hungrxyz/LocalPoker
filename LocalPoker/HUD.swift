@@ -27,11 +27,13 @@ class HUD {
 	}
 	
 	func show(text: String?) {
-		window.addSubview(hud)
-		if let text = text {
-			hud.labelText = text
+		dispatch_async(dispatch_get_main_queue()) { () -> Void in
+			self.window.addSubview(self.hud)
+			if let text = text {
+				self.hud.labelText = text
+			}
+			self.hud.show(true)
 		}
-		hud.show(true)
 	}
 	
 	func hide() {

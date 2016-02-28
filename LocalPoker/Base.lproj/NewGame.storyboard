@@ -276,11 +276,13 @@
                         <outlet property="minPeopleLabel" destination="Wus-OA-BRw" id="9YJ-jj-sGm"/>
                         <outlet property="selectedDateLabel" destination="Ny2-7F-OVK" id="I9d-9V-z75"/>
                         <segue destination="fRz-B2-S3v" kind="modal" identifier="newEventProfileSegue" id="2eI-X0-lir"/>
+                        <segue destination="UmY-pk-426" kind="unwind" identifier="unwindNewEventSegue" unwindAction="unwindNewEventSegue:" id="3qe-lE-YcN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K77-qT-ocv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="UmY-pk-426" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="464"/>
+            <point key="canvasLocation" x="1011" y="426"/>
         </scene>
         <!--Date and Time-->
         <scene sceneID="7tx-ss-CQE">
@@ -351,7 +353,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqb-yT-eCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="psc-uK-vaj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1715" y="464"/>
+            <point key="canvasLocation" x="1426" y="426"/>
         </scene>
         <!--PlayerProfile-->
         <scene sceneID="RjP-SW-8wC">
@@ -359,7 +361,7 @@
                 <viewControllerPlaceholder storyboardName="PlayerProfile" id="fRz-B2-S3v" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L7D-E6-GWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1715" y="917"/>
+            <point key="canvasLocation" x="1011" y="849"/>
         </scene>
     </scenes>
 </document>

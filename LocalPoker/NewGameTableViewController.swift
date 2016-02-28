@@ -60,6 +60,9 @@ class NewGameTableViewController: UITableViewController {
 					print(error)
 				} else if let record = record {
 					print(record)
+					dispatch_async(dispatch_get_main_queue(), { () -> Void in
+						self.performSegueWithIdentifier("unwindNewEventSegue", sender: self)
+					})
 				}
 			}
 		}
