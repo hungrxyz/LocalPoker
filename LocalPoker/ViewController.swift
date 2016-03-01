@@ -16,7 +16,6 @@ class ViewController: UIViewController {
 	var events = [Event]() {
 		didSet {
 			dispatch_async(dispatch_get_main_queue()) { () -> Void in
-				print("events")
 				self.tableView.reloadData()
 				self.refreshControl.endRefreshing()
 			}
@@ -48,9 +47,15 @@ class ViewController: UIViewController {
 			if let error = error {
 				print(error)
 			} else if let result = result {
-				print(result)
 				var results = [Event]()
 				for record in result {
+//					publicDB.deleteRecordWithID(record.recordID, completionHandler: { (recordID, error) -> Void in
+//						if let error = error {
+//							print(error)
+//						} else if let recordID = recordID {
+//							print(recordID)
+//						}
+//					})
 					let event = Event(id: record.recordID.recordName,
 						host: record["host"] as! String,
 						name: record["name"] as! String,
@@ -71,7 +76,6 @@ class ViewController: UIViewController {
 	}
 	
 	func handleRefresh(refreshControll: UIRefreshControl) {
-		print("loading")
 		loadEvents()
 	}
 
@@ -82,7 +86,6 @@ class ViewController: UIViewController {
 	}
 	
 	@IBAction func unwindNewEventSegue(segue: UIStoryboardSegue) {
-		print("jahauza")
 		loadEvents()
 	}
 }

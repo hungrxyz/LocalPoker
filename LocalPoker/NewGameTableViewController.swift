@@ -19,6 +19,7 @@ class NewGameTableViewController: UITableViewController {
 	@IBOutlet weak var blindsTextField: UITextField!
 	@IBOutlet weak var additionalInfoTextView: UITextView!
 	@IBOutlet weak var selectedDateLabel: UILabel!
+	@IBOutlet var requiredFields: [UITextField]!
 	
 	var eventDate: NSDate! {
 		didSet {
@@ -41,29 +42,39 @@ class NewGameTableViewController: UITableViewController {
 	}
 	
 	@IBAction func createEventTapped(sender: AnyObject) {
-		if let pokerName = getPokerName() {
-			HUD.sharedHUD.show("Creating New Event...")
-			let newEvent = CKRecord(recordType: "Event")
-			newEvent.setValue(pokerName, forKey: "host")
-			newEvent.setValue(eventNameTextField.text, forKey: "name")
-			newEvent.setValue(eventDate, forKey: "date")
-			newEvent.setValue(locationTextField.text, forKey: "location")
-			newEvent.setValue(Int(minPeopleLabel.text!), forKey: "minPlayers")
-			newEvent.setValue(Int(maxPeopleLabel.text!), forKey: "maxPlayers")
-			newEvent.setValue(buyInTextField.text, forKey: "buyIn")
-			newEvent.setValue(blindsTextField.text, forKey: "blinds")
-			newEvent.setValue(additionalInfoTextView.text, forKey: "additionalInfo")
-			
-			CKContainer.defaultContainer().publicCloudDatabase.saveRecord(newEvent) { record, error in
-				HUD.sharedHUD.hide()
-				if let error = error {
-					print(error)
-				} else if let record = record {
-					print(record)
-					dispatch_async(dispatch_get_main_queue(), { () -> Void in
-						self.performSegueWithIdentifier("unwindNewEventSegue", sender: self)
-					})
+		for field in requiredFields {
+			if !field.text!.isEmpty {
+				if eventDate != nil {
+					if let pokerName = getPokerName() {
+						HUD.sharedHUD.show("Creating New Event...")
+						let newEvent = CKRecord(recordType: "Event")
+						newEvent.setValue(pokerName, forKey: "host")
+						newEvent.setValue(eventNameTextField.text, forKey: "name")
+						newEvent.setValue(eventDate, forKey: "date")
+						newEvent.setValue(locationTextField.text, forKey: "location")
+						newEvent.setValue(Int(minPeopleLabel.text!), forKey: "minPlayers")
+						newEvent.setValue(Int(maxPeopleLabel.text!), forKey: "maxPlayers")
+						newEvent.setValue(buyInTextField.text, forKey: "buyIn")
+						newEvent.setValue(blindsTextField.text, forKey: "blinds")
+						newEvent.setValue(additionalInfoTextView.text, forKey: "additionalInfo")
+						
+						CKContainer.defaultContainer().publicCloudDatabase.saveRecord(newEvent) { record, error in
+							HUD.sharedHUD.hide()
+							if let error = error {
+								print(error)
+							} else if let record = record {
+								print(record)
+								dispatch_async(dispatch_get_main_queue(), { () -> Void in
+									self.performSegueWithIdentifier("unwindNewEventSegue", sender: self)
+								})
+							}
+						}
+					}
+				} else {
+					showAlert("Missing Information", message: "Select a date of the event to proceed")
 				}
+			} else {
+				showAlert("Missing Information", message: "All fields have to be filled out")
 			}
 		}
 	}
@@ -80,6 +91,12 @@ class NewGameTableViewController: UITableViewController {
 			self.presentViewController(alert, animated: true, completion: nil)
 		}
 		return nil
+	}
+	
+	func showAlert(title: String, message: String) {
+		let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+		alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+		presentViewController(alert, animated: true, completion: nil)
 	}
 	
 	@IBAction func unwindToNewGame(segue: UIStoryboardSegue) {
