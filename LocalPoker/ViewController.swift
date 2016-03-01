@@ -35,9 +35,12 @@ class ViewController: UIViewController {
 		loadEvents()
 		
 		tableView.addSubview(refreshControl)
+		
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadEvents", name: "NewEventNotification", object: nil)
 	}
 	
 	func loadEvents() {
+		print("Halo")
 		HUD.sharedHUD.show("Loading Events...")
 		let container = CKContainer.defaultContainer()
 		let publicDB = container.publicCloudDatabase
@@ -47,6 +50,7 @@ class ViewController: UIViewController {
 			if let error = error {
 				print(error)
 			} else if let result = result {
+				print("We have a result")
 				var results = [Event]()
 				for record in result {
 //					publicDB.deleteRecordWithID(record.recordID, completionHandler: { (recordID, error) -> Void in
@@ -68,9 +72,8 @@ class ViewController: UIViewController {
 						additionalInfo: record["additionalInfo"] as! String)
 					results.append(event)
 				}
-				dispatch_async(dispatch_get_main_queue(), { () -> Void in
-					self.events = results
-				})
+				self.events = results
+				print(self.events.count)
 			}
 		}
 	}
@@ -83,11 +86,7 @@ class ViewController: UIViewController {
 		if let eventDetailViewController = segue.destinationViewController as? EventDetailViewController {
 			eventDetailViewController.event = selectedEvent
 		}
-	}
-	
-	@IBAction func unwindNewEventSegue(segue: UIStoryboardSegue) {
-		loadEvents()
-	}
+	}	
 }
 
 extension ViewController: UITableViewDataSource {
