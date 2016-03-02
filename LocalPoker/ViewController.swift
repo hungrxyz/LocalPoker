@@ -16,6 +16,7 @@ class ViewController: UIViewController {
 	var events = [Event]() {
 		didSet {
 			dispatch_async(dispatch_get_main_queue()) { () -> Void in
+				self.events.count
 				self.tableView.reloadData()
 				self.refreshControl.endRefreshing()
 			}
@@ -40,7 +41,6 @@ class ViewController: UIViewController {
 	}
 	
 	func loadEvents() {
-		print("Halo")
 		HUD.sharedHUD.show("Loading Events...")
 		let container = CKContainer.defaultContainer()
 		let publicDB = container.publicCloudDatabase
@@ -50,7 +50,6 @@ class ViewController: UIViewController {
 			if let error = error {
 				print(error)
 			} else if let result = result {
-				print("We have a result")
 				var results = [Event]()
 				for record in result {
 //					publicDB.deleteRecordWithID(record.recordID, completionHandler: { (recordID, error) -> Void in
@@ -73,7 +72,6 @@ class ViewController: UIViewController {
 					results.append(event)
 				}
 				self.events = results
-				print(self.events.count)
 			}
 		}
 	}
