@@ -29,7 +29,7 @@ class EventDetailViewController: UIViewController {
 		
 		title = event.name
 		hostLabel.text = event.host
-		dateLabel.text = "\(event.date)"
+		dateLabel.text = formatDate(event.date)
 		locationLabel.text = event.location
 		minPeopleLabel.text = event.minPeople.description
 		maxPeopleLabel.text = event.maxPeople.description

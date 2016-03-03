@@ -23,7 +23,7 @@ class NewGameTableViewController: UITableViewController {
 	
 	var eventDate: NSDate! {
 		didSet {
-			selectedDateLabel.text = "\(eventDate)"
+			selectedDateLabel.text = formatDate(eventDate)
 		}
 	}
 	

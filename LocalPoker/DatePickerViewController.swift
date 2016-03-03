@@ -20,9 +20,9 @@ class DatePickerViewController: UIViewController {
 	}
 	
 	@IBAction func datePickerValueChanged(sender: UIDatePicker) {
-		print(sender.date)
-		selectedDateLabel.text = "\(sender.date)"
+		selectedDateLabel.text = formatDate(sender.date)
 		selectedDate = sender.date
 	}
-	
 }
+
+
